@@ -1,6 +1,6 @@
 import os
 
-# from datetime import timedelta
+from datetime import timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -11,7 +11,7 @@ load_dotenv(override=True)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = "django-insecure-4v%+*%8v3n9a^t*1rmqs-6iwggsrn^zw5wx+++4@zf69i5%-(v"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 DEBUG = os.getenv("DEBUG", False) == "True"
@@ -28,10 +28,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "rest_framework",
-
+    "rest_framework_simplejwt",
+    "django_filters",
     "users",
+    "library",
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR / "media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
