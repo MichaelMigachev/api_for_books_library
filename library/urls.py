@@ -1,6 +1,12 @@
 from rest_framework.routers import DefaultRouter
 
-from library.views import BookViewSet, AuthorViewSet, GenreViewSet, RentalViewSet
+from library.views import (
+    BookViewSet,
+    AuthorViewSet,
+    GenreViewSet,
+    RentalViewSet
+)
+
 from library.apps import LibraryConfig
 
 
@@ -13,5 +19,5 @@ router.register(r"authors", AuthorViewSet, basename="authors")
 router.register(r"genres", GenreViewSet, basename="genres")
 router.register(r"rent", RentalViewSet, basename="rent")
 
-
-urlpatterns = router.urls
+urlpatterns = []
+urlpatterns += router.urls

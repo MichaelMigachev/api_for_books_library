@@ -17,6 +17,11 @@ python-dotenv = "^1.1.1"
 black = "^25.1.0"
 djangorestframework-simplejwt = "^5.5.0"
 django-filter = "^25.1"
+celery = "^5.5.3"
+django-celery-beat = "^2.8.1"
+redis = "^6.2.0"
+eventlet = "^0.40.1"
+gevent = "^25.5.1"
 
 
 [build-system]

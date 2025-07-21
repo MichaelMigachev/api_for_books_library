@@ -25,8 +25,8 @@ urlpatterns = [
         name="token_refresh",
     ),
     path(
-        "logout/",  # Новый адрес для выхода из аккаунта
-        TokenRefreshView.as_view(),  # Используем тот же класс для обновления токена (просто как пример)
+        "logout/",
+        TokenRefreshView.as_view(),
         name="logout",
     ),
 ]
