@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "django_filters",
     "django_celery_beat",
+    "drf_spectacular",
 
     "users",
     "library",
@@ -131,6 +132,8 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
+    # для автоматической генерации OpenAPI схемы
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 SIMPLE_JWT = {
@@ -168,3 +171,10 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Library API",
+    "DESCRIPTION": "API для управления библиотекой книг, авторов, жанров и аренды.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}

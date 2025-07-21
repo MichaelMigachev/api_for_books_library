@@ -35,3 +35,14 @@ python3 manage.py migrate
 
 ### Запуск программы
 python3 manage.py runserver
+
+### Документация будет доступна по адресам:
+
+Swagger
+http://localhost:8000/swagger/
+
+ReDoc 
+http://localhost:8000/redoc/
+
+JSON-схема  
+http://localhost:8000/schema/
