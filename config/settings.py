@@ -1,22 +1,19 @@
 import os
-
-from datetime import timedelta
-from pathlib import Path
-
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+from datetime import timedelta
+from pathlib import Path
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-SECRET_KEY = os.getenv("SECRET_KEY")
-
-
 DEBUG = os.getenv("DEBUG", False) == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -28,13 +25,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "rest_framework",
     "rest_framework_simplejwt",
     "django_filters",
     "django_celery_beat",
     "drf_spectacular",
-
     "users",
     "library",
 ]
@@ -162,11 +157,11 @@ CELERY_BEAT_SCHEDULE = {
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.yandex.ru"
-EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
+EMAIL_PORT = os.getenv("EMAIL_PORT")
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
@@ -174,7 +169,7 @@ EMAIL_ADMIN = EMAIL_HOST_USER
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "Library API",
-    "DESCRIPTION": "API для управления библиотекой книг, авторов, жанров и аренды.",
+    "DESCRIPTION": "API для управления библиотекой книг.",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }

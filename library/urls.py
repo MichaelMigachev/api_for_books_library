@@ -1,11 +1,6 @@
 from rest_framework.routers import DefaultRouter
 
-from library.views import (
-    BookViewSet,
-    AuthorViewSet,
-    GenreViewSet,
-    RentalViewSet
-)
+from library.views import BookViewSet, AuthorViewSet, GenreViewSet, RentalViewSet
 
 from library.apps import LibraryConfig
 

@@ -3,15 +3,17 @@ from django.urls import path, include
 
 from rest_framework import permissions
 
-from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView,SpectacularRedocView
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
+    SpectacularRedocView,
+)
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("users.urls", namespace="users")),
     path("", include("library.urls", namespace="library")),
-
-
     # Документация
     # генерация OpenAPI-схемы
     path("schema/", SpectacularAPIView.as_view(), name="schema"),
