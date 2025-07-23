@@ -102,10 +102,7 @@ class RentalViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         """Делает проверку выдачи книги."""
         book = get_object_or_404(Book, pk=serializer.validated_data["book"].pk)
-        reader = get_object_or_404(
-            User,
-            pk=serializer.validated_data["reader"].pk
-        )
+        reader = get_object_or_404(User, pk=serializer.validated_data["reader"].pk)
 
         if not book.is_available:
             raise ValidationError("Книга уже выдана.")
