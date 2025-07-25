@@ -23,6 +23,8 @@ redis = "^6.2.0"
 eventlet = "^0.40.1"
 gevent = "^25.5.1"
 drf-spectacular = {extras = ["swagger-ui"], version = "^0.28.0"}
+coverage = "^7.9.2"
+pytz = "^2025.2"
 
 
 [build-system]
